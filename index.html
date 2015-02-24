@@ -69,6 +69,385 @@
         </div>
       </section>
 
+      <section data-bespoke-state="">
+        <div class="content">
+          <h3>How do we apply this to our real world apps?</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="">
+        <div class="content">
+          <h3>Using RxJS: Reactive Extension for Javascript</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="">
+        <div class="content">
+          <h3>In this case, we'll use the Angular Toolkit</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Let's start simple :)</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Let's imagine a counter app</h3>
+        </div>
+      </section>
+
+    <section data-bespoke-state="livecode">
+      <div class="content" data-angular-app="counter" ng-controller="MainCtrl">
+        <input type="button" value="Click me to increase counter" ng-click="increaseCounter()" />
+        <span>Current counter value {{counter}}</span>
+      </div>
+    </section>
+
+    <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="1-2" ><code class="language-markup">&lt;input type=&quot;button&quot; value=&quot;Click me to increase counter&quot;
+ng-click=&quot;increaseCounter()&quot; /&gt;
+&lt;span&gt;Current counter value {{counter}}&lt;/span&gt;
+</code></pre></div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="3" ><code class="language-markup">&lt;input type=&quot;button&quot; value=&quot;Click me to increase counter&quot;
+ng-click=&quot;increaseCounter()&quot; /&gt;
+&lt;span&gt;Current counter value {{counter}}&lt;/span&gt;
+</code></pre></div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="1"><code class="language-javascript">angular.module('counter', ['rx']);
+
+angular.module('counter').controller('MainCtrl',
+  function(ApiServer, rx, $scope) {
+      $scope.$createObservableFunction('increaseCounter')
+      .flatMap(function() {
+          return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
+      })
+      .do(ApiServer.logCounter)
+      .scan(function(acc, val) {return acc + val;})
+      .subscribe(function(counter) {
+          $scope.counter = counter;
+          console.log("Total counter is", counter);
+      }, function(error) {
+          console.error("There was an error");
+      });
+});
+</code></pre></div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="5"><code class="language-javascript">angular.module('counter', ['rx']);
+
+angular.module('counter').controller('MainCtrl',
+  function(ApiServer, rx, $scope) {
+      $scope.$createObservableFunction('increaseCounter')
+      .flatMap(function() {
+          return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
+      })
+      .do(ApiServer.logCounter)
+      .scan(function(acc, val) {return acc + val;})
+      .subscribe(function(counter) {
+          $scope.counter = counter;
+          console.log("Total counter is", counter);
+      }, function(error) {
+          console.error("There was an error");
+      });
+});
+</code></pre></div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="6-8"><code class="language-javascript">angular.module('counter', ['rx']);
+
+angular.module('counter').controller('MainCtrl',
+  function(ApiServer, rx, $scope) {
+      $scope.$createObservableFunction('increaseCounter')
+      .flatMap(function() {
+          return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
+      })
+      .do(ApiServer.logCounter)
+      .scan(function(acc, val) {return acc + val;})
+      .subscribe(function(counter) {
+          $scope.counter = counter;
+          console.log("Total counter is", counter);
+      }, function(error) {
+          console.error("There was an error");
+      });
+});
+</code></pre></div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="9"><code class="language-javascript">angular.module('counter', ['rx']);
+
+angular.module('counter').controller('MainCtrl',
+  function(ApiServer, rx, $scope) {
+      $scope.$createObservableFunction('increaseCounter')
+      .flatMap(function() {
+          return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
+      })
+      .do(ApiServer.logCounter)
+      .scan(function(acc, val) {return acc + val;})
+      .subscribe(function(counter) {
+          $scope.counter = counter;
+          console.log("Total counter is", counter);
+      }, function(error) {
+          console.error("There was an error");
+      });
+});
+</code></pre></div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="10"><code class="language-javascript">angular.module('counter', ['rx']);
+
+angular.module('counter').controller('MainCtrl',
+  function(ApiServer, rx, $scope) {
+      $scope.$createObservableFunction('increaseCounter')
+      .flatMap(function() {
+          return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
+      })
+      .do(ApiServer.logCounter)
+      .scan(function(acc, val) {return acc + val;})
+      .subscribe(function(counter) {
+          $scope.counter = counter;
+          console.log("Total counter is", counter);
+      }, function(error) {
+          console.error("There was an error");
+      });
+});
+</code></pre></div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="11-16"><code class="language-javascript">angular.module('counter', ['rx']);
+
+angular.module('counter').controller('MainCtrl',
+  function(ApiServer, rx, $scope) {
+      $scope.$createObservableFunction('increaseCounter')
+      .flatMap(function() {
+          return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
+      })
+      .do(ApiServer.logCounter)
+      .scan(function(acc, val) {return acc + val;})
+      .subscribe(function(counter) {
+          $scope.counter = counter;
+          console.log("Total counter is", counter);
+      }, function(error) {
+          console.error("There was an error");
+      });
+});
+</code></pre></div>
+      </section>
+
+      <section data-bespoke-state="omg">
+        <div class="content">
+        </div>
+      </section>
+
+      <section class="white only-image">
+        <div class="content nofade">
+          <img class="full-width-img" src="img/stream-diagram-01.jpg">
+        </div>
+      </section>
+
+      <section class="white only-image">
+        <div class="content nofade">
+          <img class="full-width-img" src="img/stream-diagram-02.jpg">
+        </div>
+      </section>
+
+      <section class="white only-image">
+        <div class="content nofade">
+          <img class="full-width-img" src="img/stream-diagram-03.jpg">
+        </div>
+      </section>
+
+      <section class="white only-image">
+        <div class="content nofade">
+          <img class="full-width-img" src="img/stream-diagram-04.jpg">
+        </div>
+      </section>
+
+      <section class="white only-image">
+        <div class="content nofade">
+          <img src="img/observable-diagram.jpg">
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Clicking on a counter are very few events</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Let's actually try with more events!</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="livecode" class="mover" data-angular-app="mover" ng-controller="MainCtrl">
+        <div class="content">
+          <moving-text class="moving-text" text="ngConf is awesome!!!"></moving-text>
+        </div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre><code class="language-markup">&lt;moving-text class=&quot;moving-text&quot; text=&quot;ngConf is awesome!!!&quot;&gt;&lt;/moving-text&gt;</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="1-9"><code class="language-javascript">angular.module('mover').directive('movingText', function() {
+    return {
+        restrict: 'E',
+        replace: 'true',
+        templateUrl: '/js/movingText.html',
+        scope: {
+            text: '@'
+        },
+        controller: function($scope, rx, $element, $window, $document) {
+
+            var textContainer = $element.find('.text-container')[0];
+
+            var mouseMoved = $scope.$createObservableFunction('mouseMoved')
+                .map(function (e) {
+                    var offset = getOffset(textContainer);
+                    return {
+                      offsetX : e.clientX - offset.left,
+                      offsetY : e.clientY - offset.top
+                    };
+                  });
+            // ...</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="1"><code class="language-markup">&lt;div ng-mousemove=&quot;mouseMoved()&quot;&gt;
+  &lt;div class=&quot;text-container&quot;&gt;
+    &lt;span ng-repeat=&quot;letter in letters&quot; ng-style=&quot;{top: letter.top, left: letter.left}&quot; style=&quot;position: absolute;&quot;&gt;
+      {{letter.text}}
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="2-7"><code class="language-markup">&lt;div ng-mousemove=&quot;mouseMoved()&quot;&gt;
+  &lt;div class=&quot;text-container&quot;&gt;
+    &lt;span ng-repeat=&quot;letter in letters&quot; ng-style=&quot;{top: letter.top, left: letter.left}&quot; style=&quot;position: absolute;&quot;&gt;
+      {{letter.text}}
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="13-20"><code class="language-javascript">angular.module('mover').directive('movingText', function() {
+    return {
+        restrict: 'E',
+        replace: 'true',
+        templateUrl: '/js/movingText.html',
+        scope: {
+            text: '@'
+        },
+        controller: function($scope, rx, $element, $window, $document) {
+
+            var textContainer = $element.find('.text-container')[0];
+
+            var mouseMoved = $scope.$createObservableFunction('mouseMoved')
+                .map(function (e) {
+                    var offset = getOffset(textContainer);
+                    return {
+                      offsetX : e.clientX - offset.left,
+                      offsetY : e.clientY - offset.top
+                    };
+                  });
+            // ...</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="3,5-10"><code class="language-javascript">// ...
+
+            $scope.letters = [];
+            angular.forEach($scope.text, function(letter, index) {
+                var letterConfig = {
+                    text: letter,
+                    top: 0,
+                    left: 0
+                };
+                $scope.letters.push(letterConfig);
+                mouseMoved
+                    .delay(100 * index)
+                    .subscribe(function(pos) {
+                        letterConfig.top = pos.offsetY;
+                        letterConfig.left = pos.offsetX + index * 20 + 15;
+                    });
+            });
+        }
+
+    };
+});</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="11-16"><code class="language-javascript">// ...
+
+            $scope.letters = [];
+            angular.forEach($scope.text, function(letter, index) {
+                var letterConfig = {
+                    text: letter,
+                    top: 0,
+                    left: 0
+                };
+                $scope.letters.push(letterConfig);
+                mouseMoved
+                    .delay(100 * index)
+                    .subscribe(function(pos) {
+                        letterConfig.top = pos.offsetY;
+                        letterConfig.left = pos.offsetX + index * 20 + 15;
+                    });
+            });
+        }
+
+    };
+});</code></pre>
+        </div>
+      </section>
+
+      <section data-bespoke-state="omg">
+        <div class="content">
+        </div>
+      </section>
+
+
+
 
       <section>
         <div class="content">
@@ -93,10 +472,10 @@
               This has been
             </div>
           </div>
-          <h1>TALK NAME</h1>
+          <h1>Reactive All the things</h1>
           <div class="byline">
             <div class="classy">
-              by Martin Gontovnikas
+              by Martin Gontovnikas &amp; Ben Lesh
             </div>
           </div>
           <div class="profile">
@@ -104,6 +483,13 @@
               <img src="img/gonto.jpg">
             </div>
             <h3>@mgonto</h3>
+          </div>
+          <br />
+          <div class="profile">
+            <div class="rounded-image">
+              <img src="img/benlesh.jpeg">
+            </div>
+            <h3>@benlesh</h3>
           </div>
         </div>
       </section>
@@ -127,5 +513,13 @@
     <script src="js/prism.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/deck.js"></script>
+    <script src="js/lodash.js"></script>
+    <script src="js/rx.lite.js"></script>
+    <script src="js/rx.aggregates.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/rx.angular.js"></script>
+    <script src="js/app.bootstrap.js"></script>
+    <script src="js/app.basic.js"></script>
+    <script src="js/app.mover.js"></script>
     </body>
 </html>
