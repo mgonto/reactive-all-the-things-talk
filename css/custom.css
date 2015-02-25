@@ -160,11 +160,27 @@ article.mgonto::before {
   background-image: url("../img/gontobg.jpeg");
 }
 
-article.auth0::before {
-  -webkit-filter: blur(5.5px) grayscale(0.3) brightness(0.4);
-  -moz-filter: blur(5.5px) grayscale(0.3) brightness(0.4);
-  filter: blur(5.5px) grayscale(0.3) brightness(0.4);
-  background-image: url("../img/a0.png");
+article.benlesh::before {
+  -webkit-filter: blur(3.25px) grayscale(0.5) brightness(0.2);
+  -moz-filter: blur(3.25px) grayscale(0.5) brightness(0.2);
+  filter: blur(3.25px) grayscale(0.5) brightness(0.2);
+  background-image: url("../img/benlesh.jpeg");
+}
+
+article.js::before {
+  -webkit-filter: blur(5.5px) grayscale(0.1) brightness(0.4);
+  -moz-filter: blur(5.5px) grayscale(0.1) brightness(0.4);
+  filter: blur(5.5px) grayscale(0.1) brightness(0.4);
+  background-size: contain;
+  background-image: url("../img/js.png");
+}
+
+article.advocate::before {
+  -webkit-filter: blur(5.5px) grayscale(0.1) brightness(0.4);
+  -moz-filter: blur(5.5px) grayscale(0.1) brightness(0.4);
+  filter: blur(5.5px) grayscale(0.1) brightness(0.4);
+  background-size: contain;
+  background-image: url("../img/advocate.jpg");
 }
 
 article.programming::before {
@@ -185,6 +201,29 @@ article.omg::before {
   -moz-filter: none;
   filter: none;
   background-image: url("../img/omg.gif");
+}
+
+article.happyminion::before {
+  -webkit-filter: none;
+  -moz-filter: none;
+  filter: none;
+  background-image: url("../img/happyminion.gif");
+}
+
+article.sadclap::before {
+  -webkit-filter: none;
+  -moz-filter: none;
+  filter: none;
+  background-image: url("../img/sadclap.gif");
+}
+
+
+
+article.smoke::before {
+  -webkit-filter: none;
+  -moz-filter: none;
+  filter: none;
+  background-image: url("../img/smoke.gif");
 }
 
 .profile {
