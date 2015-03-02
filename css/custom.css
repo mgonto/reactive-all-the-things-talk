@@ -191,6 +191,57 @@ article.programming::before {
   background-image: url("../img/programming.gif");
 }
 
+
+article.looking-around::before {
+  -webkit-filter: brightness(0.4);
+  -moz-filter: brightness(0.4);
+  filter: brightness(0.4);
+  background-size: contain;
+  background-image: url("../img/looking-around.gif");
+}
+
+article.he-said-what::before {
+  -webkit-filter: brightness(0.4);
+  -moz-filter: brightness(0.4);
+  filter: brightness(0.4);
+  background-size: contain;
+  background-image: url("../img/survivor-reaction.gif");
+}
+
+article.the-future::before {
+  -webkit-filter: grayscale(0.4) brightness(0.2);
+  -moz-filter: grayscale(0.4) brightness(0.2);
+  filter: grayscale(0.4) brightness(0.2);
+  background-size: contain;
+  background-image: url("../img/bttf.jpg");
+}
+
+article.the-present::before {
+  -webkit-filter: grayscale(0.4) brightness(0.2);
+  -moz-filter: grayscale(0.4) brightness(0.2);
+  filter: grayscale(0.4) brightness(0.2);
+  background-size: contain;
+  background-image: url("../img/pong.gif");
+}
+
+
+article.netflix-hq::before {
+  -webkit-filter: grayscale(0.4) brightness(0.4);
+  -moz-filter: grayscale(0.4) brightness(0.4);
+  filter: grayscale(0.4) brightness(0.4);
+  background-size: contain;
+  background-image: url("../img/netflix-hq.jpg");
+}
+
+article.demo-day-fail::before {
+  -webkit-filter: brightness(0.4);
+  -moz-filter: brightness(0.4);
+  filter: brightness(0.4);
+  background-size: contain;
+  background-image: url("../img/parakeet-explosion.gif");
+}
+
+
 article.programming, article.safari, article.bobby {
   background-color: white;
   opacity: 0.95;

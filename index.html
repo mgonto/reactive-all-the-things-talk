@@ -108,9 +108,11 @@
         </div>
       </section>
 
+      <!-- 
+      FWIW: I think this slide might make some women (and men) uncomfortable
       <section data-bespoke-state="smoke">
         <div class="content"></div>
-      </section>
+      </section> -->
 
       <section data-bespoke-state="benlesh">
         <div class="content">
@@ -124,14 +126,32 @@
 
       <section data-bespoke-state="benlesh">
         <div class="content">
-          <div class="unbrokenline"></div>
-          <h3>@benlesh</h3>
-          <div class="unbrokenline"></div>
-          <div class="fake-list">
-            <h4>- Fill me</h4>
-            <h4>- Fill me</h4>
-            <h4>- Fill me</h4>
+          <div class="byline">
+            <div class="classy">
+              Senior UI Engineer
+            </div>
           </div>
+          <img src="img/netflix.png">
+          <div class="byline">
+            <div class="classy">
+              Edge Tools and Insights Team
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <div class="byline">
+            <div class="classy">Join me at Netflix</div>
+          </div>
+          <div class="fake-list">
+            <h4>- Great culture (no really)</h4>
+            <h4>- Huge fans of FRP and RxJS</h4>
+            <h4>- We love developers with framework experience</h4>
+          </div>
+          <div class="unbrokenline"></div>
+          <h4><a href="http://jobs.netflix.com">http://jobs.netflix.com</a></h4>
         </div>
       </section>
 
@@ -156,15 +176,348 @@
 
       <section>
         <div class="content">
-          <h3>TODO: Fill me BEN from here. Explanations.</h3>
+          <h3>Functional Reactive Programming?</h3>
+          <div class="byline">
+            <div class="classy">why get functional at all?</div>
+          </div>
         </div>
       </section>
 
-      <section data-bespoke-state="">
+      <section>
         <div class="content">
-          <h3>How do we apply this to our real world apps?</h3>
+          <h4>I have nice, familiar, imperative code:</h4>
+          <pre><code class="language-javascript">function oddlyExcited(nums) {
+  var result = [];
+  nums.forEach(function(n) {
+    if(n % 2 === 1) {
+      result.push(n + '!!!');
+    }
+  });
+  return result;
+}
+          </code></pre>
         </div>
       </section>
+
+      <section>
+        <div class="content">
+          <h3>JavaScript, as you know it, is going to change</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Cores aren't getting much faster</h3>
+          <div class="classy">(Now you can't scale by waiting a month)</div>
+          <img src="img/clock-speed.png"/>
+          <sub><a href="https://csgillespie.wordpress.com/2011/01/25/cpu-and-gpu-trends-over-time/">(source: csgillespie.wordpress.com)</a></sub>
+        </div>
+      </section>
+
+      <section data-bespoke-state="looking-around">
+        <div class="content">
+          <h4>Real concurrency is coming to JavaScript</h4>    
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <div class="classy">(but not yet)</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Learn Functional Programming</h3>
+          <div class="byline">
+            <div class="classy">Its goals align* with parallelism!</div>
+          </div>
+          <div class="fake-list">
+            <h4>- immutable state</h4>
+            <h4>- no side effects</h4>
+            <h4>- work could easily be scaled across threads</h4>
+          </div>
+          <sub>(* pun!)</sub>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h4>Array map(), filter(), reduce()</h4>
+          <pre><code class="language-javascript">function oddlyExcited(nums) {
+  return nums.filter(function(x) {
+    return x % 2 === 1;
+  }).map(function(x) {
+    return x + '!!!';
+  });
+}
+          </code></pre>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <div class="classy">working on my app at Netflix, I encountered a problem with this approach</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h2>Argus</h2>
+          <div class="byline">
+            <div class="classy">A realtime dashboard for the Netflix cloud</div>
+          </div>
+          <div class="fake-list">
+            <h4>- dozens of graphs</h4>
+            <h4>- realtime multiplexed data over WebSockets</h4>
+            <h4>- lots of rich user interactions</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          (gif of redacted Argus here)
+        </div>
+      </section>
+
+      <section data-bespoke-state="he-said-what">
+        <div class="content">
+          <div class="byline">
+            <div class="classy">full disclosure</div>
+          </div>
+          <div class="classy">(It's an Ember app)</div>
+          <div class="unbrokenline"></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>The first big demo</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <div class="fake-list">
+            <h4>- Feeling confident</h4>
+            <h4>- Created reusable, composable graphs</h4>
+            <h4>- Got all of our arrays of real-time data scrubbed into graphs</h4>
+            <h4>- We got our mouse interactions working</h4>
+            <h4>- Used test data that mirrored production data volume</h4>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="demo-day-fail">
+        <div class="content">
+          <h3>But we used production data for the demo</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <img src="img/aw-snap.png" alt="Aw snap">
+          <div class="classy">(okay, really it just locked up)</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Too much Array map, filter, reduce</h3>
+          <div class="byline">
+            <div class="classy">killed performance</div>
+          </div>
+          <div class="fake-list">
+            <h4>- iterates over the entire array at each step</h4>
+            <h4>- creates new arrays at each step</h4>
+            <h4>- those intermediary arrays need to be garbage collected</h4>
+          </div>
+        </div>
+      </section>
+      
+      <section>
+        <div class="content">
+          <h3>I need stream processing!</h3>
+          <div class="classy">RxJS Observables enable that</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <pre><code class="language-javascript">array.filter(x => x % 2 === 1).map(x => x + '!!!');</code></pre>
+          <div class="byline">
+            <div class="classy">becomes</div>
+          </div>
+          <pre><code class="language-javascript">observable.filter(x => x % 2 === 1).map(x => x + '!!!');</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>What else can Observables do?</h3>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <div class="classy">Observables are a representation any collection of things over any amount of time</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Observables are a pattern to</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- Start a data stream</h4>
+            <h4>- Emit 0 to N messages</h4>
+            <h4>- Teardown the data stream</h4>
+          </div></div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>What are "data streams?"</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- Arrays of data</h4>
+            <h4>- Mouse/Keyboard Interactions</h4>
+            <h4>- DOM Events</h4>
+            <h4>- Network I/O (e.g. Ajax, WebSockets)</h4>
+            <h4>- Animations</h4>
+            <h4>- Speech Recognition</h4>
+            <h4>- Joystick Input</h4>
+            <h4>- Anything, really</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Two types of Observables</h3>
+          <div class="fake-list">
+            <h4>- Hot: data stream already started</h4>
+            <h4>- Cold: stream starts on subscription</h4>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="netflix-hq">
+        <div class="content">
+          <h3>Meanwhile, back at Netflix...</h3>
+          <div class="byline">
+            <div class="classy">RxJS has solved another problem for us</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Sockets Die</h3>
+          <div class="unbrokenline"></div>
+          <div class="classy">When our users closed the lid and walked away, or lost network connectivity, the socket would disconnect.</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>multiplexed socket reconnection</h3>
+          <div class="byline">
+            <div class="classy">this gets complicated</div>
+          </div>
+          <div class="fake-list">
+            <h4>- Need to resend real-time data subscription requests</h4>
+            <h4>- That means maintaining state on each recent request</h4>
+            <h4>- Lots of complicated logic in our event handlers</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Socket Observable</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- connect the socket on subscription</h4>
+            <h4>- emit all messages that arrive on the socket</h4>
+            <h4>- error the observable on errors and bad closes</h4>
+            <h4>- diconnect the socket on disposal</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Multiplexed Data Observable</h3>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- sends sub request on subscription</h4>
+            <h4>- mapped from the socket observable</h4>
+            <h4>- filters to only pertinent messages</h4>
+            <h4>- sends an unsub request on disposal</h4>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Observables can retry!</h3>
+          <pre><code class="language-javascript">// a socket that is singleton
+var socket = Rx.DOM.fromWebSocket('ws://socket-server.com').
+singleInstance();
+
+function getMultiplexData(id) {
+  return Observable.create((observer) => {
+    socket.onNext(JSON.stringify({ id: id, type: 'sub' }));
+
+    var disposable = socket.map(e => JSON.parse(e.data)).
+      filter(d => d.id === id).
+      forEach(observer);
+
+    return function(){
+      socket.onNext(JSON.stringify({ id: id, type: 'unsub' }));
+      disposable.dispose();
+    }
+  }).
+  retry(10);
+}
+          </code></pre>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h3>Fair Warning</h3>
+          <div class="byline">
+            <div class="classy">never trust a developer with nothing bad to say</div>
+          </div>
+          <div class="fake-list">
+            <h4>- RxJS has a decent learning curve</h4>
+            <h4>- You need to change how you think about problems</h4>
+            <h4>- There are a lot of operators to learn</h4>
+            <h4>- sometimes sync, sometimes async</h4>
+          </div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="the-future">
+        <div class="content">
+          <h3>In Angular 2.X, Observables will be first class</h3>
+        </div>
+      </section>
+
+      <section data-bespoke-state="the-present">
+        <div class="content">
+          <h3>But how can we use this today?</h3>
+        </div>
+      </section>
+
+      <!--
+
+      END BEN'S SLIDES
+
+      -->
 
       <section data-bespoke-state="">
         <div class="content">
