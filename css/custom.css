@@ -160,6 +160,14 @@ article.mgonto::before {
   background-image: url("../img/gontobg.jpeg");
 }
 
+article.auth0::before {
+  -webkit-filter: blur(3.25px) grayscale(0.5) brightness(0.2);
+  -moz-filter: blur(3.25px) grayscale(0.5) brightness(0.2);
+  filter: blur(3.25px) grayscale(0.5) brightness(0.2);
+  background-image: url("../img/badge.png");
+  background-size: contain;
+}
+
 article.benlesh::before {
   -webkit-filter: blur(3.25px) grayscale(0.5) brightness(0.2);
   -moz-filter: blur(3.25px) grayscale(0.5) brightness(0.2);
@@ -252,6 +260,13 @@ article.omg::before {
   -moz-filter: none;
   filter: none;
   background-image: url("../img/omg.gif");
+}
+
+article.onemore::before {
+  -webkit-filter: none;
+  -moz-filter: none;
+  filter: none;
+  background-image: url("../img/onemore.jpg");
 }
 
 article.happyminion::before {
