@@ -571,6 +571,31 @@ ng-click=&quot;increaseCounter()&quot; /&gt;
 
       <section data-bespoke-state="code long">
         <div class="content nofade">
+          <pre data-line="7-17"><code class="language-javascript">angular.module('counter', []);
+
+angular.module('counter').controller('MainCtrl',
+  function(ApiServer, $scope) {
+      $scope.counter = 0;
+
+      $scope.increaseCounter = function() {
+        ApiServer.getCounterAmount(new Date())
+          .then(functio(newCount) {
+            return ApiServer.logCounter(newCount).then(function() {
+              return newCount;
+            });
+          })
+          .then(function(newCount) {
+            $scope.counter = $scope.counter + newCount;
+          });
+      }
+});
+</code></pre>
+<p>How we'd regularly do it</p>
+</div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
           <pre data-line="1"><code class="language-javascript">angular.module('counter', ['rx']);
 
 angular.module('counter').controller('MainCtrl',
