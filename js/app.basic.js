@@ -20,7 +20,7 @@ angular.module('counter').controller('MainCtrl',
 
         $scope.counter = 0;
 
-        $scope.$createObservableFunction('increaseCounter')
+        var disposable = $scope.$createObservableFunction('increaseCounter')
         .flatMap(function() {
             return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
         })
@@ -31,6 +31,10 @@ angular.module('counter').controller('MainCtrl',
             console.log("Total counter is", counter);
         }, function(error) {
             console.error("There was an error");
+        });
+
+        $scope.$on('$destroy', function() {
+          disposable.dispose();
         });
 });
 

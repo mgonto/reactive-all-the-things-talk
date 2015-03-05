@@ -157,7 +157,7 @@
           </div>
           <div class="fake-list">
             <h4>- Great culture (no really)</h4>
-            <h4>- Huge fans of FRP and RxJS</h4>
+            <h4>- Huge fans of Reactive Programming and RxJS</h4>
             <h4>- We love developers with framework experience</h4>
           </div>
           <div class="unbrokenline"></div>
@@ -180,21 +180,21 @@
 
       <section>
         <div class="content">
-          <h2>So Let's start</h3>
-        </div>
-      </section>
-
-      <section>
-        <div class="content">
           <h3>Functional Reactive Programming?</h3>
-          <div class="byline">
-            <div class="classy">why get functional at all?</div>
+          <div class="unbrokenline"></div>
+          <div class="fake-list">
+            <h4>- This talk is <strong>NOT</strong> about FRP</h4>
+            <h4>- This talk is about integrating Functional Programming</h4>
+            <h4>- This talk is about Reactive Programming</h4>
+            <h4>- FRP is a different animal</h4>
           </div>
         </div>
       </section>
 
       <section>
         <div class="content">
+          <h2>Why go functional?</h2>
+          <div class="unbrokenline"></div>
           <h4>I have nice, familiar, imperative code:</h4>
           <pre><code class="language-javascript">function oddlyExcited(nums) {
   var result = [];
@@ -364,7 +364,33 @@
 
       <section>
         <div class="content">
-          <div class="classy">Observables are a representation any collection of things over any amount of time</div>
+          <div class="unbrokenline"></div>
+          <h3>Observables</h3>
+          <div class="classy">
+            <div class="byline">are a representation of</div>
+          </div>
+          <h3>any collection of values</h3>
+          <div class="classy">
+            <div class="byline">over</div>
+          </div>
+          <h3>any amount of time</h3>
+          <div class="unbrokenline"></div>
+        </div>
+      </section>
+
+      <section data-bespoke-state="">
+        <div class="content">
+          <div class="unbrokenline"></div>
+          <h3>Observables</h3>
+          <div class="classy">
+            <div class="byline">can be</div>
+          </div>
+          <h3>merged, concatenated and zipped</h3>
+          <div class="byline">
+            <div class="classy">like any other</div>
+          </div>
+          <h3>collection</h3>
+          <div class="unbrokenline"></div>
         </div>
       </section>
 
@@ -392,16 +418,6 @@
             <h4>- Speech Recognition</h4>
             <h4>- Joystick Input</h4>
             <h4>- Anything, really</h4>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="content">
-          <h3>Two types of Observables</h3>
-          <div class="fake-list">
-            <h4>- Hot: data stream already started</h4>
-            <h4>- Cold: stream starts on subscription</h4>
           </div>
         </div>
       </section>
@@ -600,7 +616,7 @@ angular.module('counter').controller('MainCtrl',
 
 angular.module('counter').controller('MainCtrl',
   function(ApiServer, rx, $scope) {
-      $scope.$createObservableFunction('increaseCounter')
+      var disposable = $scope.$createObservableFunction('increaseCounter')
       .flatMap(function() {
           return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
       })
@@ -612,6 +628,10 @@ angular.module('counter').controller('MainCtrl',
       }, function(error) {
           console.error("There was an error");
       });
+
+      $scope.$on('$destroy', function() {
+        disposable.dispose();
+      })
 });
 </code></pre>
 <p>We depend on rx module</p>
@@ -624,7 +644,7 @@ angular.module('counter').controller('MainCtrl',
 
 angular.module('counter').controller('MainCtrl',
   function(ApiServer, rx, $scope) {
-      $scope.$createObservableFunction('increaseCounter')
+      var disposable = $scope.$createObservableFunction('increaseCounter')
       .flatMap(function() {
           return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
       })
@@ -636,6 +656,10 @@ angular.module('counter').controller('MainCtrl',
       }, function(error) {
           console.error("There was an error");
       });
+
+      $scope.$on('$destroy', function() {
+        disposable.dispose();
+      })
 });
 </code></pre>
 <p>We get the clicks stream</p>
@@ -648,7 +672,7 @@ angular.module('counter').controller('MainCtrl',
 
 angular.module('counter').controller('MainCtrl',
   function(ApiServer, rx, $scope) {
-      $scope.$createObservableFunction('increaseCounter')
+      var disposable = $scope.$createObservableFunction('increaseCounter')
       .flatMap(function() {
           return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
       })
@@ -660,6 +684,10 @@ angular.module('counter').controller('MainCtrl',
       }, function(error) {
           console.error("There was an error");
       });
+
+      $scope.$on('$destroy', function() {
+        disposable.dispose();
+      })
 });
 </code></pre>
 <p>For each new value we get the amount to sum</p>
@@ -672,7 +700,7 @@ angular.module('counter').controller('MainCtrl',
 
 angular.module('counter').controller('MainCtrl',
   function(ApiServer, rx, $scope) {
-      $scope.$createObservableFunction('increaseCounter')
+      var disposable = $scope.$createObservableFunction('increaseCounter')
       .flatMap(function() {
           return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
       })
@@ -684,6 +712,10 @@ angular.module('counter').controller('MainCtrl',
       }, function(error) {
           console.error("There was an error");
       });
+
+      $scope.$on('$destroy', function() {
+        disposable.dispose();
+      })
 });
 </code></pre>
 <p>As a side effect, we log each of them</p>
@@ -696,7 +728,7 @@ angular.module('counter').controller('MainCtrl',
 
 angular.module('counter').controller('MainCtrl',
   function(ApiServer, rx, $scope) {
-      $scope.$createObservableFunction('increaseCounter')
+      var disposable = $scope.$createObservableFunction('increaseCounter')
       .flatMap(function() {
           return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
       })
@@ -708,6 +740,10 @@ angular.module('counter').controller('MainCtrl',
       }, function(error) {
           console.error("There was an error");
       });
+
+      $scope.$on('$destroy', function() {
+        disposable.dispose();
+      })
 });
 </code></pre>
 <p>We sum each new value</p>
@@ -720,7 +756,7 @@ angular.module('counter').controller('MainCtrl',
 
 angular.module('counter').controller('MainCtrl',
   function(ApiServer, rx, $scope) {
-      $scope.$createObservableFunction('increaseCounter')
+      var disposable = $scope.$createObservableFunction('increaseCounter')
       .flatMap(function() {
           return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
       })
@@ -732,6 +768,10 @@ angular.module('counter').controller('MainCtrl',
       }, function(error) {
           console.error("There was an error");
       });
+
+      $scope.$on('$destroy', function() {
+        disposable.dispose();
+      })
 });
 </code></pre>
 <p>We subscribe to listen to changes and handle ALL errors</p>
@@ -770,20 +810,6 @@ angular.module('counter').controller('MainCtrl',
       <section class="white only-image">
         <div class="content nofade">
           <img src="img/observable-diagram.jpg">
-        </div>
-      </section>
-
-      <section data-bespoke-state="">
-        <div class="content">
-          <div class="byline">
-            <div class="classy">we're</div>
-          </div>
-          <h2>transforming, merging, filtering each value</h2>
-          <div class="byline">
-            <div class="classy">that arrives on</div>
-          </div>
-          <h2>the observable</h2>
-          <div class="unbrokenline"></div>
         </div>
       </section>
 
@@ -834,19 +860,9 @@ angular.module('counter').controller('MainCtrl',
         scope: {
             text: '@'
         },
-        controller: function($scope, rx, $element, $window, $document) {
-
-            var textContainer = $element.find('.text-container')[0];
-
-            var mouseMoved = $scope.$createObservableFunction('mouseMoved')
-                .map(function (e) {
-                    var offset = getOffset(textContainer);
-                    return {
-                      offsetX : e.clientX - offset.left,
-                      offsetY : e.clientY - offset.top
-                    };
-                  });
-            // ...</code></pre>
+        controller: MovingController
+    }
+});</code></pre>
         </div>
       </section>
 
@@ -876,79 +892,130 @@ angular.module('counter').controller('MainCtrl',
 
       <section data-bespoke-state="code long">
         <div class="content nofade">
-          <pre data-line="13-20"><code class="language-javascript">angular.module('mover').directive('movingText', function() {
-    return {
-        restrict: 'E',
-        replace: 'true',
-        templateUrl: '/js/movingText.html',
-        scope: {
-            text: '@'
-        },
-        controller: function($scope, rx, $element, $window, $document) {
+          <pre data-line="4-11"><code class="language-javascript">function directiveController() {
+  $scope.letters = [];
 
-            var textContainer = $element.find('.text-container')[0];
+   var mouseMoved = $scope.$createObservableFunction('mouseMoved')
+      .map(function (e) {
+        var offset = getOffset(textContainer);
+        return {
+          offsetX : e.clientX - offset.left,
+          offsetY : e.clientY - offset.top
+        };
+      })
+      .flatMap(function(delta) {
+        return rx.Observable.fromArray(_.map($scope.text, function(letter, index) {
+          return {
+            letter: letter,
+            delta: delta,
+            index: index
+          };
+        }));
+      })
+      // ...
+          </code></pre>
+        </div>
+      </section>
 
-            var mouseMoved = $scope.$createObservableFunction('mouseMoved')
-                .map(function (e) {
-                    var offset = getOffset(textContainer);
-                    return {
-                      offsetX : e.clientX - offset.left,
-                      offsetY : e.clientY - offset.top
-                    };
-                  });
-            // ...</code></pre>
+         <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="12-20"><code class="language-javascript">function directiveController() {
+  $scope.letters = [];
+
+   var mouseMoved = $scope.$createObservableFunction('mouseMoved')
+      .map(function (e) {
+        var offset = getOffset(textContainer);
+        return {
+          offsetX : e.clientX - offset.left,
+          offsetY : e.clientY - offset.top
+        };
+      })
+      .flatMap(function(delta) {
+        return rx.Observable.fromArray(_.map($scope.text, function(letter, index) {
+          return {
+            letter: letter,
+            delta: delta,
+            index: index
+          };
+        }));
+      })
+      // ...
+          </code></pre>
         </div>
       </section>
 
       <section data-bespoke-state="code long">
         <div class="content nofade">
-          <pre data-line="3,5-10"><code class="language-javascript">// ...
+          <pre data-line="2-12"><code class="language-javascript">// ...
+  .flatMap(function(letterConfig) {
+    return rx.Observable.timer(letterConfig.index * 100)
+        .map(function() {
+          return {
+            text: letterConfig.letter,
+            top: letterConfig.delta.offsetY,
+            left: letterConfig.delta.offsetX + letterConfig.index * 20 + 15,
+            index: letterConfig.index
+          };
+      });
+  })
+  .subscribe(function(letterConfig) {
+    $scope.letters[letterConfig.index] = letterConfig;
+  });
 
-            $scope.letters = [];
-            angular.forEach($scope.text, function(letter, index) {
-                var letterConfig = {
-                    text: letter,
-                    top: 0,
-                    left: 0
-                };
-                $scope.letters.push(letterConfig);
-                mouseMoved
-                    .delay(100 * index)
-                    .subscribe(function(pos) {
-                        letterConfig.top = pos.offsetY;
-                        letterConfig.left = pos.offsetX + index * 20 + 15;
-                    });
-            });
-        }
-
-    };
-});</code></pre>
+ $scope.$on('$destroy', function(){
+   mouseMoved.dispose();
+ });
+}</code></pre>
         </div>
       </section>
 
       <section data-bespoke-state="code long">
         <div class="content nofade">
-          <pre data-line="11-16"><code class="language-javascript">// ...
+          <pre data-line="13-15"><code class="language-javascript">// ...
+  .flatMap(function(letterConfig) {
+    return rx.Observable.timer(letterConfig.index * 100)
+        .map(function() {
+          return {
+            text: letterConfig.letter,
+            top: letterConfig.delta.offsetY,
+            left: letterConfig.delta.offsetX + letterConfig.index * 20 + 15,
+            index: letterConfig.index
+          };
+      });
+  })
+  .subscribe(function(letterConfig) {
+    $scope.letters[letterConfig.index] = letterConfig;
+  });
 
-            $scope.letters = [];
-            angular.forEach($scope.text, function(letter, index) {
-                var letterConfig = {
-                    text: letter,
-                    top: 0,
-                    left: 0
-                };
-                $scope.letters.push(letterConfig);
-                mouseMoved
-                    .delay(100 * index)
-                    .subscribe(function(pos) {
-                        letterConfig.top = pos.offsetY;
-                        letterConfig.left = pos.offsetX + index * 20 + 15;
-                    });
-            });
-        }
+ $scope.$on('$destroy', function(){
+   mouseMoved.dispose();
+ });
+}</code></pre>
+        </div>
+      </section>
 
-    };
-});</code></pre>
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="17-19"><code class="language-javascript">// ...
+  .flatMap(function(letterConfig) {
+    return rx.Observable.timer(letterConfig.index * 100)
+        .map(function() {
+          return {
+            text: letterConfig.letter,
+            top: letterConfig.delta.offsetY,
+            left: letterConfig.delta.offsetX + letterConfig.index * 20 + 15,
+            index: letterConfig.index
+          };
+      });
+  })
+  .subscribe(function(letterConfig) {
+    $scope.letters[letterConfig.index] = letterConfig;
+  });
+
+ $scope.$on('$destroy', function(){
+   mouseMoved.dispose();
+ });
+}</code></pre>
         </div>
       </section>
 
@@ -959,20 +1026,7 @@ angular.module('counter').controller('MainCtrl',
 
        <section>
         <div class="content">
-          <h2>RxJS is just an example</h2>
-        </div>
-      </section>
-
-      <section>
-        <div class="content">
-          <h2>Lots of companies are starting to use this</h2>
-        </div>
-      </section>
-
-
-      <section>
-        <div class="content">
-          <h2>This is just the begining</h2>
+          <h2>This is just the beginning</h2>
         </div>
       </section>
 

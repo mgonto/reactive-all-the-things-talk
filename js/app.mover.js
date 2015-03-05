@@ -26,37 +26,50 @@ angular.module('mover').directive('movingText', function() {
                 left: scrollLeft - clientLeft };
             }
 
-            var mouseMoved = rx.Observable.fromEvent($document, 'mousemove')
-                .map(function (e) {
-                    var offset = getOffset(textContainer);
-                    return {
-                      offsetX : e.clientX - offset.left,
-                      offsetY : e.clientY - offset.top
-                    };
-                  });
 
+           $scope.letters = [];
 
-
-            $scope.letters = [];
-            angular.forEach($scope.text, function(letter, index) {
-                var letterConfig = {
-                    text: letter,
-                    top: 0,
-                    left: 0
+           var mouseMoved = rx.Observable.fromEvent($document, 'mousemove')
+              .map(function (e) {
+                var offset = getOffset(textContainer);
+                return {
+                  offsetX : e.clientX - offset.left,
+                  offsetY : e.clientY - offset.top
                 };
-                $scope.letters.push(letterConfig);
-                console.log('Subscribing', letter, index);
-                mouseMoved
-                    .delay(100 * index)
-                    .subscribe(function(pos) {
-                        $scope.$apply(function() {
-                            letterConfig.top = pos.offsetY;
-                            letterConfig.left = pos.offsetX + index * 20 + 15;
-                        });
-                    });
+              })
+              .flatMap(function(delta) {
+                return rx.Observable.fromArray(_.map($scope.text, function(letter, index) {
+                  return {
+                    letter: letter,
+                    delta: delta,
+                    index: index
+                  };
+                }));
+              })
+              .flatMap(function(letterConfig) {
+                return rx.Observable.timer(letterConfig.index * 100)
+                  .map(function() {
+                    return {
+                      text: letterConfig.letter,
+                      top: letterConfig.delta.offsetY,
+                      left: letterConfig.delta.offsetX + letterConfig.index * 20 + 15,
+                      index: letterConfig.index
+                    };
+                });
+              }).
+              subscribe(function(letterConfig) {
+                $scope.$apply(function() {
+                  $scope.letters[letterConfig.index] = letterConfig;
+                });
+              });
+
+           $scope.$on('$destroy', function(){
+             mouseMoved.dispose();
+           });
 
 
-            });
+
+
 
         }
 
