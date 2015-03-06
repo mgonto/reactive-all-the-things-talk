@@ -33,6 +33,14 @@
         </div>
       </section>
 
+      <section data-bespoke-state="warning">
+        <div class="content"></div>
+      </section>
+
+      <section data-bespoke-state="eat">
+        <div class="content"></div>
+      </section>
+
       <section data-bespoke-state="mgonto">
         <div class="content">
           <div class="byline">
@@ -520,6 +528,30 @@ function getMultiplexData(id) {
         </div>
       </section>
 
+      <section>
+        <div class="content">
+          <h4>Reactive Programming</h4>
+          <pre ><code class="language-javascript">var c = a + b;
+
+// Do something with c
+</code></pre></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="content">
+          <h4>Reactive Programming</h4>
+          <pre><code class="language-javascript">var cStream = Observable.combineLatest(aStream, bStream, function(a, b) {
+  return a + b
+});
+
+cStream.forEach(function(c) {
+  // Do something with c
+});
+</code></pre></div>
+        </div>
+      </section>
+
       <section data-bespoke-state="the-future">
         <div class="content">
           <h3>In Angular 2.X, Observables will be first class</h3>
@@ -595,7 +627,7 @@ angular.module('counter').controller('MainCtrl',
 
       $scope.increaseCounter = function() {
         ApiServer.getCounterAmount(new Date())
-          .then(functio(newCount) {
+          .then(function(newCount) {
             return ApiServer.logCounter(newCount).then(function() {
               return newCount;
             });
@@ -775,6 +807,34 @@ angular.module('counter').controller('MainCtrl',
 });
 </code></pre>
 <p>We subscribe to listen to changes and handle ALL errors</p>
+</div>
+      </section>
+
+      <section data-bespoke-state="code long">
+        <div class="content nofade">
+          <pre data-line="18-20"><code class="language-javascript">angular.module('counter', ['rx']);
+
+angular.module('counter').controller('MainCtrl',
+  function(ApiServer, rx, $scope) {
+      var disposable = $scope.$createObservableFunction('increaseCounter')
+      .flatMap(function() {
+          return rx.Observable.fromPromise(ApiServer.getCounterAmount(new Date()));
+      })
+      .do(ApiServer.logCounter)
+      .scan(function(acc, val) {return acc + val;})
+      .subscribe(function(counter) {
+          $scope.counter = counter;
+          console.log("Total counter is", counter);
+      }, function(error) {
+          console.error("There was an error");
+      });
+
+      $scope.$on('$destroy', function() {
+        disposable.dispose();
+      })
+});
+</code></pre>
+<p>We dispose the observable</p>
 </div>
       </section>
 
